@@ -5,9 +5,13 @@
     <script src="js/option.js"></script>
     <script src="js/sourceImgLoader.js"></script>
     <script src="js/pixelateRequest.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <h1>Pixelizator</h1>
     <div id="control">
+        <label id="lblChoose">Choose image from your computer</label>
         <input accept="image/*" id="inputFile" name="myFile" type="file" onchange="sourceImgLoader()">
         <div>
             <input type="range" id="volume" name="volume"
@@ -19,9 +23,9 @@
         <input type="button" value="Download">
     </div>
     <div id="imageView">
-        <img id="imgSource" src="" style="visibility: hidden" alt="source image">
+        <img id="imgSource" src="" alt="source image">
         <br>
-        <img id="imgAltered" src="" style="visibility: hidden" alt="altered image">
+        <img id="imgAltered" src="" alt="altered image">
     </div>
 </body>
 </html>
