@@ -26,7 +26,7 @@ Web-app for pixelating images with some settings
 * Some info about source image
 
 ## Algorithm
-####Rough
+#### Rough
 <p>
   <img src="https://i.ibb.co/znnbPqV/Frame-1.png" alt="smooth algo">
 </p>
@@ -34,7 +34,7 @@ Web-app for pixelating images with some settings
 * Take color of central pixel
 * Applies to all pixels
 
-####Smooth
+#### Smooth
 <p>
   <img src="https://i.ibb.co/Sm3SP9H/Frame-1-1.png" alt="smooth algo">
 </p>
@@ -42,8 +42,8 @@ Web-app for pixelating images with some settings
 * Calculates the average of all pixels for each of the RGB channels
 * Applies to all pixels
 
-##Gallery
-###Smooth algorithm
+## Gallery
+### Smooth algorithm
 <p>
 <a><img src="https://i.ibb.co/cXC8pDj/Screen-Shot-2020-11-02-at-6-10-04-PM.png" alt="img1"></a>
 </p>
@@ -57,7 +57,7 @@ Web-app for pixelating images with some settings
 <a><img src="https://i.ibb.co/4PZcrMX/Screen-Shot-2020-11-02-at-6-48-53-PM.png" alt="img4"></a>
 </p>
 
-##Rough algorithm
+## Rough algorithm
 <p>
 <a><img src="https://i.ibb.co/DLb6f12/Screen-Shot-2020-11-02-at-6-10-15-PM.png" alt="img5"></a>
 </p>
