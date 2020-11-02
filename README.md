@@ -8,9 +8,10 @@ Web-app for pixelating images with some settings
 
 ## Installation
 1. `git clone https://github.com/yuriimakohon/pixelizator`
-2. Build: `./mvnw clean package`
-3. Run server: `./wvnw tomcat7:run`
-4. Check site: http://localhost:8080/pixelizator
+2. Apply maven wrapper: `mvn -N io.takari:maven:wrapper`
+3. Build: `./mvnw clean package`
+4. Run server: `./wvnw tomcat7:run`
+5. Check site: http://localhost:8080/pixelizator
 
 ## How to pixelate images
 * Select image on `file chooser`
