@@ -1,4 +1,4 @@
-#Pixelizator
+# Pixelizator
 
 Web-app for pixelating images with some settings
 
