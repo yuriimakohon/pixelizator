@@ -5,13 +5,39 @@ function setLblValue() {
     document.getElementById('lblValue').innerHTML = 'x' + (+document.getElementById('volume').value);
 }
 
+function setImageInfo() {
+    setLblSize();
+    setLblRes();
+}
+
+function setLblSize(file) {
+    let totalBytes = document.querySelector("#inputFile").files[0].size;
+    let size;
+
+    if (totalBytes < 1000000)
+        size = Math.floor(totalBytes / 1000) + 'KB';
+    else
+        size = Math.floor(totalBytes / 1000000) + 'MB';
+    document.getElementById("lblSize").innerText = 'Size: ' + size;
+}
+
+function setLblRes() {
+    let image = document.querySelector("#imgSource");
+    let w = image.naturalWidth;
+    let h = image.naturalHeight;
+
+    document.querySelector("#lblRes").innerText = "Resolution: " + h + " x " + w;
+}
+
 function sourceImgLoader() {
     let path = document.getElementById("inputFile").files[0];
     let reader = new FileReader();
+
     reader.onload = function() {
         let img = document.getElementById("imgSource");
         img.src = reader.result;
         img.style.visibility = "visible";
+        setTimeout(setImageInfo, 100);
     }
     reader.readAsDataURL(path);
 }

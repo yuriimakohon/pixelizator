@@ -10,7 +10,7 @@ function pixelateRequest() {
         formData.append('pix_size', pixSize);
         formData.append('algo_type', algoType);
 
-        fetch("http://localhost:8080/pixelate", {
+        fetch("http://localhost:8080/pixelizator/pixelate", {
             method: 'POST',
             body: formData
         }).then(r => r.arrayBuffer())

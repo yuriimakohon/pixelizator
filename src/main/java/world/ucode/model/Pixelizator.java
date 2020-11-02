@@ -1,4 +1,4 @@
-package world.ucode;
+package world.ucode.model;
 
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 import java.awt.image.BufferedImage;
@@ -34,7 +34,7 @@ public class Pixelizator {
             for (int h = 0; h < height; h += pixSize) {
                 int pixel;
                 if (algo == AlgoType.ROUGH)
-                    pixel = imgSrc.getRGB(w, h);
+                    pixel = mixRough(imgSrc, w, h, pixSize);
                 else
                     pixel = mixSmooth(imgSrc, w, h, pixSize);
 
@@ -44,6 +44,13 @@ public class Pixelizator {
             }
 
         return bufferedImageToInputStream(imgDest);
+    }
+
+    private static int mixRough(BufferedImage img,  int w, int h, int pixSize) {
+        pixSize = ++pixSize / 2;
+        int wCenter = w + pixSize < img.getWidth() ? w + pixSize : w;
+        int hCenter = h + pixSize < img.getHeight() ? h + pixSize : h;
+        return img.getRGB(wCenter, hCenter);
     }
 
     private static int mixSmooth(BufferedImage img,  int w, int h, int pixSize) {
