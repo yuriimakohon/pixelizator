@@ -14,7 +14,8 @@ public class PixelateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int pixSize = inputStreamToInt(req.getPart("pix_size").getInputStream());
-        InputStream in = Pixelizator.Pixelate(req.getPart("file").getInputStream(), pixSize);
+        Pixelizator.AlgoType algorithm = Pixelizator.getAlgoType(inputStreamToString(req.getPart("algo_type").getInputStream()));
+        InputStream in = Pixelizator.pixelate(req.getPart("file").getInputStream(), pixSize, algorithm);
 
         if (in != null) {
             OutputStream out = resp.getOutputStream();
@@ -31,7 +32,7 @@ public class PixelateServlet extends HttpServlet {
         }
     }
 
-    private static int inputStreamToInt(InputStream is) {
+    private static String inputStreamToString(InputStream is) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
 
@@ -54,6 +55,10 @@ public class PixelateServlet extends HttpServlet {
             }
         }
 
-        return Integer.parseInt(sb.toString());
+        return sb.toString();
+    }
+
+    private static int inputStreamToInt(InputStream is) {
+        return Integer.parseInt(inputStreamToString(is));
     }
 }

@@ -3,7 +3,6 @@
     <title>Pixelizator</title>
 
     <script src="js/option.js"></script>
-    <script src="js/sourceImgLoader.js"></script>
     <script src="js/pixelateRequest.js"></script>
 
     <link rel="stylesheet" href="css/styles.css">
@@ -18,14 +17,33 @@
                    min="2" max="30" onchange="setLblValue()">
             <label id="lblValue" for="volume"></label>
         </div>
-        <input type="button" value="Pixelate" onclick="pixelateRequest()">
+        <div>
+            <label>
+                <input type="radio" name="algorithm" id="rbtn_smooth" value="smooth" checked="checked">
+                Smooth
+            </label>
+            <label>
+                <input type="radio" name="algorithm" id="rbtn_rough" value="rough">
+                Rough
+            </label>
+            <input type="button" value="Pixelate" onclick="pixelateRequest()">
+        </div>
         <br>
-        <input type="button" value="Download">
+        <div id="div_download">
+            <label>Download: </label>
+            <a class="a_download" id="download_jpeg" href="" download="pixelated.jpeg">.jpeg</a>
+            <a class="a_download" id="download_png" href="" download="pixelated.png">.png</a>
+            <a class="a_download" id="download_webp" href="" download="pixelated.webp">.webp</a>
+            <a class="a_download" id="download_bmp" href="" download="pixelated.bmp">.bmp</a>
+            <a class="a_download" id="download_tiff" href="" download="pixelated.tiff">.tiff</a>
+            <a class="a_download" id="download_raw" href="" download="pixelated.raw">.raw</a>
+            <a class="a_download" id="download_gif" href="" download="pixelated.gif">.gif</a>
+        </div>
     </div>
     <div id="imageView">
-        <img id="imgSource" src="" alt="source image">
+        <img id="imgSource" alt="source image" src="">
         <br>
-        <img id="imgAltered" src="" alt="altered image">
+        <img id="imgAltered" alt="altered image" src="">
     </div>
 </body>
 </html>

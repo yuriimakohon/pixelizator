@@ -11,7 +11,20 @@ import java.awt.*;
 
 
 public class Pixelizator {
-    public static InputStream Pixelate(InputStream in, int pixSize) throws IOException {
+    public enum AlgoType {
+        SMOOTH,
+        ROUGH,
+    }
+
+    public static AlgoType getAlgoType(String str) {
+        if ("rough".equals(str)) {
+            return AlgoType.ROUGH;
+        } else {
+            return AlgoType.SMOOTH;
+        }
+    }
+
+    public static InputStream pixelate(InputStream in, int pixSize, AlgoType algo) throws IOException {
         BufferedImage imgSrc = ImageIO.read(in);
         int width = imgSrc.getWidth();
         int height = imgSrc.getHeight();
@@ -19,7 +32,11 @@ public class Pixelizator {
 
         for (int w = 0; w < width; w += pixSize)
             for (int h = 0; h < height; h += pixSize) {
-                int pixel = mixPixels(imgSrc, w, h, pixSize);
+                int pixel;
+                if (algo == AlgoType.ROUGH)
+                    pixel = imgSrc.getRGB(w, h);
+                else
+                    pixel = mixSmooth(imgSrc, w, h, pixSize);
 
                 for (int dw = w; (dw < w + pixSize) && (dw < imgDest.getWidth()); dw++)
                     for (int dh = h; (dh < h + pixSize) && (dh < imgDest.getHeight()); dh++)
@@ -29,7 +46,7 @@ public class Pixelizator {
         return bufferedImageToInputStream(imgDest);
     }
 
-    private static int mixPixels(BufferedImage img,  int w, int h, int pixSize) {
+    private static int mixSmooth(BufferedImage img,  int w, int h, int pixSize) {
         int pixCount = 0;
         int pixel;
         int r = 0;
